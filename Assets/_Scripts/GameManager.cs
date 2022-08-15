@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake() {
 
-        //If Singleton (Instance) exists, it deletes it. If not, it initializes it
+        //If Singleton (Instance) exists, it deletes it. If not, it initializes it 
         if (Instance != null && Instance != this) {
             Destroy(this);
         } else {
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    //Gets the data of enemy's and player's pokemon and displays it in the UI
     private void DisplayPlayerPokemonData() {
         //PlayerData
         playerSprite.sprite = pokemonPlayerSprites[(int)currentPlayerPokemon];
