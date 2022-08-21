@@ -2,22 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class Move
 {
-    //Properties
-    string name;
-    Type_ID type;
-    int PWR;
-    int ACC;
-    int PP;
-    bool EFC;
+    //"Move" Object with all needed properties
 
-    public Move(string name, Type_ID type, int PWR, int ACC, int PP, bool EFC) {
-        this.name = name;
-        this.type = type;
-        this.PWR = PWR;
-        this.ACC = ACC; 
-        this.PP = PP;
-        this.EFC = EFC;
-    }
+    public string name;
+    public Type_ID type;
+    public int PWR; //Move POWER
+    public int ACC;
+    public int PP;
+    public bool SP;
+    public bool EFC;
+
 }

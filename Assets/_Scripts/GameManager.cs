@@ -12,17 +12,23 @@ public class GameManager : MonoBehaviour
     //Instances of other scripts
     PokemonProperties pokemonProperties;    //Class that contains all the Pokemon Data
 
-    [SerializeField]
-    private Pokemon_ID currentPlayerPokemon;  //Player pokemon in battle
-    [SerializeField]
-    private Pokemon_ID currentEnemyPokemon;  //Enemy pokemon in battle
-    [SerializeField]
-    private Pokemon_ID[] ownedPokemon;       //All the Pokemons player has in his "bag" and are available to switch
+    
+
+    public Pokemon_ID currentPlayerPokemon;  //Player pokemon in battle
+    public Pokemon_ID currentEnemyPokemon;  //Enemy pokemon in battle
+    
+    
+    
+    public Pokemon_ID[] playerPokemons;       //All the Pokemons player has in his "bag" and are available to switch
+    public Pokemon_ID[] enemyPokemons;       //All the Pokemons enemy has in his "bag" and are available to switch
 
     //Holds the Pokemon's sprites (Front and Back)
     public Sprite[] pokemonPlayerSprites;
     public Sprite[] pokemonEnemySprites;
 
+
+    //////COMBAT RELATED//////
+    
 
     //Texts
     public TextMeshProUGUI Dialogue;  //Main Dialogue Window, the one that says "What will CHARIZARD do?"

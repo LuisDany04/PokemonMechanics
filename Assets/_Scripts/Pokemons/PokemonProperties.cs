@@ -25,7 +25,10 @@ public class PokemonProperties : MonoBehaviour {
     private void PokemonData() {
 
         Pokedex.Add(Pokemon_ID.CHARIZARD, new Pokemon {  //Fill the properties of each Pokemon with the desired data.
-            name="CHARIZARD", 
+            id = Pokemon_ID.CHARIZARD,
+            name="CHARIZARD",
+            type = Type_ID.FIRE,
+            ability = Ability_ID.CLEAR_BODY,
             level=                          50, 
             HP=HP_Formula                   (78, 50),    //Final stat gets calculated with the given data (Check method "HP_Formula" and "Stat_Formula).   
             attack=Stat_Formula             (84, 50), 
