@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 40659743}
   - component: {fileID: 40659742}
   - component: {fileID: 40659741}
-  - component: {fileID: 40659740}
   m_Layer: 5
   m_Name: A3
   m_TagString: Untagged
@@ -164,20 +163,6 @@ RectTransform:
   m_AnchoredPosition: {x: 249, y: -464}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &40659740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 40659738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f237c54c8da4f6d418814234192d1f94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  index: 2
 --- !u!114 &40659741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 40659740}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ActionButton, Assembly-CSharp
         m_MethodName: OnClic
         m_Mode: 1
@@ -972,7 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c2d1f384100344bb04f19c33604e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerPokemon: 2
+  currentPlayerPokemon: 0
   currentEnemyPokemon: 2
   playerPokemons: 000000000100000002000000
   enemyPokemons: 0300000004000000
@@ -2000,6 +1985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434624262}
+  - component: {fileID: 434624263}
   m_Layer: 0
   m_Name: CombatManager
   m_TagString: Untagged
@@ -2022,6 +2008,18 @@ Transform:
   m_Father: {fileID: 282074826}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &434624263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434624261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d123c31042784f0499dedc8f3ac646a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &482853182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3968,7 +3966,6 @@ GameObject:
   - component: {fileID: 897210645}
   - component: {fileID: 897210644}
   - component: {fileID: 897210643}
-  - component: {fileID: 897210642}
   m_Layer: 5
   m_Name: A4
   m_TagString: Untagged
@@ -3997,20 +3994,6 @@ RectTransform:
   m_AnchoredPosition: {x: 647, y: -464}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &897210642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897210640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f237c54c8da4f6d418814234192d1f94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  index: 3
 --- !u!114 &897210643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4055,7 +4038,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 897210642}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ActionButton, Assembly-CSharp
         m_MethodName: OnClic
         m_Mode: 1
@@ -4572,7 +4555,6 @@ GameObject:
   - component: {fileID: 985496187}
   - component: {fileID: 985496186}
   - component: {fileID: 985496185}
-  - component: {fileID: 985496184}
   m_Layer: 5
   m_Name: A1
   m_TagString: Untagged
@@ -4601,20 +4583,6 @@ RectTransform:
   m_AnchoredPosition: {x: 249, y: -352}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &985496184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985496182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f237c54c8da4f6d418814234192d1f94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  index: 0
 --- !u!114 &985496185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4659,13 +4627,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 985496184}
-        m_TargetAssemblyTypeName: ActionButton, Assembly-CSharp
-        m_MethodName: OnClic
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6876,7 +6844,6 @@ GameObject:
   - component: {fileID: 1576817412}
   - component: {fileID: 1576817411}
   - component: {fileID: 1576817410}
-  - component: {fileID: 1576817409}
   m_Layer: 5
   m_Name: A2
   m_TagString: Untagged
@@ -6905,20 +6872,6 @@ RectTransform:
   m_AnchoredPosition: {x: 645, y: -352}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1576817409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576817407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f237c54c8da4f6d418814234192d1f94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  index: 1
 --- !u!114 &1576817410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6963,7 +6916,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576817409}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ActionButton, Assembly-CSharp
         m_MethodName: OnClic
         m_Mode: 1
