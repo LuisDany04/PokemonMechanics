@@ -8,10 +8,10 @@ public class Move
 
     public string name;
     public Type_ID type;
-    public int PWR; //Move POWER
-    public int ACC;
-    public int PP;
-    public bool SP;
-    public bool EFC;
+    public int PWR; //POWER
+    public int ACC; //Accuaracy 
+    public int PP;  //How many PP does it cost using this move
+    public bool SP; //Is it a special move?
+    public bool EFC; //Does the move has any chance to cause an effect?
 
 }
