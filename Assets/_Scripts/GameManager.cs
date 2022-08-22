@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     [Header("ENEMY CURRENT POKEMON DATA")]
     public Image playerSprite;
     public TextMeshProUGUI playerPokemonName;
+    public Slider playerHP;
 
     //Enemy Pokemon Data
     [Header("ENEMY CURRENT POKEMON DATA")]
@@ -62,13 +63,13 @@ public class GameManager : MonoBehaviour
     string pokemon;
 
     private void Start() {
-
-
+        Dialogue.text = "What will " + pokemonProperties.Pokedex[currentPlayerPokemon].name + " do?";
+        DisplayPlayerPokemonData();
+        //Debug.Log(pokemonProperties.Pokedex[playerPokemons[2]].id);
 
     }
 
     private void Update() {
-        DisplayPlayerPokemonData();
     }
 
 
@@ -77,12 +78,14 @@ public class GameManager : MonoBehaviour
     //Gets the data of enemy's and player's pokemon and displays it in the UI
     private void DisplayPlayerPokemonData() {
         //PlayerData
-        playerSprite.sprite = pokemonPlayerSprites[(int)currentPlayerPokemon];
-        playerPokemonName.text = pokemonProperties.Pokedex[currentPlayerPokemon].name;
-        Dialogue.text = "What will " + pokemonProperties.Pokedex[currentPlayerPokemon].name + " do?";
+        playerSprite.sprite = pokemonPlayerSprites[(int)CombatManager.Instance.currentPlayerPokemon.id];
+        playerPokemonName.text = CombatManager.Instance.currentPlayerPokemon.name;
+        playerHP.maxValue = CombatManager.Instance.currentPlayerPokemon.maxHP;
+        playerHP.value = CombatManager.Instance.currentPlayerPokemon.actualHP;
 
         //Enemy Data
-        enemySprite.sprite = pokemonEnemySprites[(int)currentEnemyPokemon];
-        enemyPokemonName.text = pokemonProperties.Pokedex[currentEnemyPokemon].name;
+        enemySprite.sprite = pokemonEnemySprites[(int)CombatManager.Instance.currentEnemyPokemon.id];
+        enemyPokemonName.text = CombatManager.Instance.currentEnemyPokemon.name;
+        
     }
 }

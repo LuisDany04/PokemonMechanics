@@ -11,13 +11,14 @@ public class CombatManager : MonoBehaviour
     PokemonProperties pokemonProperties;
     MoveList moveList;
 
-    
+    private List<Pokemon> internalPokemonList = new List<Pokemon>();
+
     private Dictionary<Pokemon_ID,Pokemon> playerPokemonList = new Dictionary<Pokemon_ID, Pokemon>();
     private Dictionary<Pokemon_ID,Pokemon> enemyPokemonList = new Dictionary<Pokemon_ID, Pokemon>();
 
 
-    private Pokemon currentPlayerPokemon;
-    private Pokemon currentEnemyPokemon;
+    public Pokemon currentPlayerPokemon;
+    public Pokemon currentEnemyPokemon;
 
 
 
@@ -28,13 +29,15 @@ public class CombatManager : MonoBehaviour
         } else {
             Instance = this;
         }
+
+        pokemonProperties = GetComponent<PokemonProperties>();
     }
     private void Start() {
-        
+        GetInternalPokemons();
     }
 
     private void Update() {
-        GetInternalPokemons();
+        
     }
 
     public void pokemonAttack(Pokemon_ID attacker, Move_ID move, Pokemon_ID target) {
@@ -51,7 +54,7 @@ public class CombatManager : MonoBehaviour
     public void playerAttack(int moveIndex) {
 
         //We save the move that player's pokemon used in a variable using the moveIndex to make the code easier to read
-        Move playerMove = moveList.moves[currentPlayerPokemon.moveSet[moveIndex]];
+        Move playerMove = currentPlayerPokemon.moveSet[moveIndex];
 
         //float that will hold the calculated damage
         float damage;
@@ -68,7 +71,7 @@ public class CombatManager : MonoBehaviour
 
         }
         
-        currentEnemyPokemon.HP = currentEnemyPokemon.HP - damage;
+        currentEnemyPokemon.actualHP = currentEnemyPokemon.actualHP - damage;
 
     }
 
@@ -79,14 +82,20 @@ public class CombatManager : MonoBehaviour
 
     //Adds the pokemon from public list of GameManager to internal dictionary in CombatManager
     private void GetInternalPokemons() {
-        /*for (int i = 0; i < GameManager.Instance.playerPokemons.Length - 1; i++) {
+        for (int i = 0; i < GameManager.Instance.playerPokemons.Length; i++) {
             playerPokemonList.Add(pokemonProperties.Pokedex[GameManager.Instance.playerPokemons[i]].id, pokemonProperties.Pokedex[GameManager.Instance.playerPokemons[i]]);
         }
+
         for (int i = 0; i < GameManager.Instance.enemyPokemons.Length; i++) {
             enemyPokemonList.Add(pokemonProperties.Pokedex[GameManager.Instance.enemyPokemons[i]].id, pokemonProperties.Pokedex[GameManager.Instance.enemyPokemons[i]]);
-        }*/
+        }
 
-        currentPlayerPokemon = playerPokemonList[GameManager.Instance.currentPlayerPokemon];
-        currentEnemyPokemon = playerPokemonList[GameManager.Instance.currentEnemyPokemon];
+        currentPlayerPokemon = playerPokemonList[GameManager.Instance.playerPokemons[0]];
+        currentEnemyPokemon = enemyPokemonList[GameManager.Instance.enemyPokemons[0]];
+        
+
+
     }
+
+
 }
