@@ -7,6 +7,7 @@ public class Move
     //"Move" Object with all needed properties
 
     public string name;
+    public MoveCategory_ID category;
     public Type_ID type;
     public int PWR; //POWER
     public int ACC; //Accuaracy 

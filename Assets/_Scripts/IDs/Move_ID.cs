@@ -3,7 +3,7 @@ public enum Move_ID {
     TACKLE,
     GROWL,
     QUICK_ATTACK,
-    BURN,
+    FLAMETHROWER,
     HYDRO_CANNON,
     VINE_WHIP,
     THUNDERBOLT,

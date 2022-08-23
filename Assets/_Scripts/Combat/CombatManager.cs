@@ -57,20 +57,20 @@ public class CombatManager : MonoBehaviour
         Move playerMove = currentPlayerPokemon.moveSet[moveIndex];
 
         //float that will hold the calculated damage
-        float damage;
+        float damage = 0;
 
         //We check if the used move is special or not, so we can use the "Attack" and "Defense" stats for the damage formula or "Special Attack" and "Sepcial Defense" stats
-        switch (playerMove.SP) {
-            case true:
+        switch (playerMove.category) {
+            case MoveCategory_ID.PHYSICAL:
                 damage = ((2f * currentPlayerPokemon.level / 5) + 2) * (playerMove.PWR) * (currentPlayerPokemon.sp_Atkk / currentEnemyPokemon.sp_Deff) / 50;
                 break;
             
-            case false:
+            case MoveCategory_ID.SPECIAL:
                 damage = ((2f * currentPlayerPokemon.level / 5) + 2) * (playerMove.PWR) * (currentPlayerPokemon.attack / currentEnemyPokemon.defense) / 50;
                 break;
 
         }
-        
+
         currentEnemyPokemon.actualHP = currentEnemyPokemon.actualHP - damage;
 
     }

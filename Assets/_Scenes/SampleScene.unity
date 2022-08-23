@@ -893,12 +893,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230743541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 94841.37, y: 56574.23, z: -35299.65}
-  m_LocalScale: {x: 108, y: 108, z: 108}
+  m_LocalPosition: {x: 878.1608, y: 523.83545, z: -236.8486}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1030443801}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &230743543
 MonoBehaviour:
@@ -924,9 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c2d1f384100344bb04f19c33604e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerPokemon: 0
-  currentEnemyPokemon: 1
-  playerPokemons: 000000000100000002000000
+  playerPokemons: 010000000000000002000000
   enemyPokemons: 0300000004000000
   pokemonPlayerSprites:
   - {fileID: 21300000, guid: 4e7023cd378451d4d80b1c653bb62ff7, type: 3}
@@ -946,6 +944,7 @@ MonoBehaviour:
   playerHP: {fileID: 286677693}
   enemySprite: {fileID: 974059008}
   enemyPokemonName: {fileID: 1638989197}
+  enemyHP: {fileID: 1109558225}
 --- !u!114 &230743546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,7 +1096,7 @@ Transform:
   m_Children:
   - {fileID: 1710577873}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282910281
 GameObject:
@@ -4416,8 +4415,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4782,7 +4781,6 @@ RectTransform:
   - {fileID: 258319791}
   - {fileID: 645324833}
   - {fileID: 2081917224}
-  - {fileID: 230743542}
   m_Father: {fileID: 1442721493}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5043,8 +5041,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6447,7 +6445,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1427833582
 MonoBehaviour:
@@ -6574,7 +6572,7 @@ RectTransform:
   - {fileID: 1245492720}
   - {fileID: 1030443801}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6721,8 +6719,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7580,8 +7578,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

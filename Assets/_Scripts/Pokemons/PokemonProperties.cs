@@ -17,17 +17,17 @@ public class PokemonProperties : MonoBehaviour {
 
     private void Awake() {
         Moves = GetComponent<MoveList>();
-        PokemonData();
         
     }
 
     private void Start() {
+        FillPokemonDictionary();
     }
 
 
 
     //Function that adds de Pokemon data to our dictionary called "Pokedex" with all it's stats.
-    private void PokemonData() {
+    private void FillPokemonDictionary() {
 
         Pokedex.Add(Pokemon_ID.CHARIZARD, new Pokemon {  //Fill the properties of each Pokemon with the desired data.
             id = Pokemon_ID.CHARIZARD,
@@ -46,7 +46,7 @@ public class PokemonProperties : MonoBehaviour {
             moveSet = new Move[]
             {   
                 Moves.moves[Move_ID.TACKLE],
-                Moves.moves[Move_ID.BURN],
+                Moves.moves[Move_ID.FLAMETHROWER],
                 Moves.moves[Move_ID.GROWL],
                 Moves.moves[Move_ID.QUICK_ATTACK],
 

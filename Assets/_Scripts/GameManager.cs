@@ -12,12 +12,12 @@ public class GameManager : MonoBehaviour
     //Instances of other scripts
     PokemonProperties pokemonProperties;    //Class that contains all the Pokemon Data
 
-    
+    /*
 
     public Pokemon_ID currentPlayerPokemon;  //Player pokemon in battle
     public Pokemon_ID currentEnemyPokemon;  //Enemy pokemon in battle
     
-    
+    */
     
     public Pokemon_ID[] playerPokemons;       //All the Pokemons player has in his "bag" and are available to switch
     public Pokemon_ID[] enemyPokemons;       //All the Pokemons enemy has in his "bag" and are available to switch
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     [Header("ENEMY CURRENT POKEMON DATA")]
     public Image enemySprite;
     public TextMeshProUGUI enemyPokemonName;
+    public Slider enemyHP;
 
 
     private void Awake() {
@@ -63,13 +64,15 @@ public class GameManager : MonoBehaviour
     string pokemon;
 
     private void Start() {
-        Dialogue.text = "What will " + pokemonProperties.Pokedex[currentPlayerPokemon].name + " do?";
-        DisplayPlayerPokemonData();
         //Debug.Log(pokemonProperties.Pokedex[playerPokemons[2]].id);
 
     }
 
+    
+
     private void Update() {
+        Dialogue.text = "What will " + CombatManager.Instance.currentPlayerPokemon.name + " do?";
+        DisplayPlayerPokemonData();
     }
 
 
@@ -86,6 +89,7 @@ public class GameManager : MonoBehaviour
         //Enemy Data
         enemySprite.sprite = pokemonEnemySprites[(int)CombatManager.Instance.currentEnemyPokemon.id];
         enemyPokemonName.text = CombatManager.Instance.currentEnemyPokemon.name;
-        
+        enemyHP.maxValue = CombatManager.Instance.currentEnemyPokemon.maxHP; 
+        enemyHP.value = CombatManager.Instance.currentEnemyPokemon.actualHP;
     }
 }
