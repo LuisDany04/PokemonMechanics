@@ -925,7 +925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPokemons: 010000000000000002000000
-  enemyPokemons: 0300000004000000
+  enemyPokemons: 0000000004000000
   pokemonPlayerSprites:
   - {fileID: 21300000, guid: 4e7023cd378451d4d80b1c653bb62ff7, type: 3}
   - {fileID: 21300000, guid: 612b6aa88e95291469e1d96088ebc649, type: 3}
@@ -957,6 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d123c31042784f0499dedc8f3ac646a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueText: {fileID: 766037698}
 --- !u!114 &230743547
 MonoBehaviour:
   m_ObjectHideFlags: 0

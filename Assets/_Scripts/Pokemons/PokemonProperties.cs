@@ -142,6 +142,9 @@ public class PokemonProperties : MonoBehaviour {
 
     }
 
+
+
+
     //HP formula from the PokemonWiki, but simplified. First parameter refers to the base stat and second one is the pokemon level.
     private int HP_Formula(int baseStat, int level) {
         return Mathf.RoundToInt(Mathf.Floor(0.01f * (2 * baseStat * level) + level + 10));    

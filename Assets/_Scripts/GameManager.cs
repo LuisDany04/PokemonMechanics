@@ -66,12 +66,12 @@ public class GameManager : MonoBehaviour
     private void Start() {
         //Debug.Log(pokemonProperties.Pokedex[playerPokemons[2]].id);
 
+        
     }
 
     
 
     private void Update() {
-        Dialogue.text = "What will " + CombatManager.Instance.currentPlayerPokemon.name + " do?";
         DisplayPlayerPokemonData();
     }
 

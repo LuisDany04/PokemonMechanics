@@ -61,7 +61,7 @@ public class MoveList: MonoBehaviour
         moves.Add(Move_ID.FLAMETHROWER, new Move {
             category = MoveCategory_ID.SPECIAL,
             name = "FLAMETHROWER",
-            type = Type_ID.NORMAL,
+            type = Type_ID.FIRE,
             PWR = 90,
             ACC = 100,
             PP = 15,
@@ -71,7 +71,7 @@ public class MoveList: MonoBehaviour
         moves.Add(Move_ID.HYDRO_CANNON, new Move {
             name = "HYDRO CANNON",
             category = MoveCategory_ID.SPECIAL,
-            type = Type_ID.NORMAL,
+            type = Type_ID.WATER,
             PWR = 150,
             ACC = 90,
             PP = 5,
@@ -81,7 +81,7 @@ public class MoveList: MonoBehaviour
         moves.Add(Move_ID.VINE_WHIP, new Move {
             name = "VINE WHIP",
             category = MoveCategory_ID.SPECIAL,
-            type = Type_ID.NORMAL,
+            type = Type_ID.GRASS,
             PWR = 45,
             ACC = 100,
             PP = 25,
@@ -91,7 +91,7 @@ public class MoveList: MonoBehaviour
         moves.Add(Move_ID.THUNDERBOLT, new Move {
             name = "THUNDERBOLT",
             category = MoveCategory_ID.SPECIAL,
-            type = Type_ID.NORMAL,
+            type = Type_ID.ELECTRIC,
             PWR = 90,
             ACC = 100,
             PP = 15,
@@ -101,7 +101,7 @@ public class MoveList: MonoBehaviour
         moves.Add(Move_ID.SHADOWBALL, new Move {
             name = "SHADOWBALL",
             category = MoveCategory_ID.SPECIAL,
-            type = Type_ID.NORMAL,
+            type = Type_ID.GHOST,
             PWR = 80,
             ACC = 100,
             PP = 15,

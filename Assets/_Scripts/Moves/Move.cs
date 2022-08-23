@@ -13,6 +13,6 @@ public class Move
     public int ACC; //Accuaracy 
     public int PP;  //How many PP does it cost using this move
     public bool SP; //Is it a special move?
-    public bool EFC; //Does the move has any chance to cause an effect?
+    public bool EFC; //Does the move has any chance to cause an effect? 
 
 }
