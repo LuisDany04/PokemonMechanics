@@ -12,16 +12,13 @@ public class GameManager : MonoBehaviour
     //Instances of other scripts
     PokemonProperties pokemonProperties;    //Class that contains all the Pokemon Data
 
-    /*
 
-    public Pokemon_ID currentPlayerPokemon;  //Player pokemon in battle
-    public Pokemon_ID currentEnemyPokemon;  //Enemy pokemon in battle
-    
-    */
-    
+    [Header("PLAYER'S TEAM")]
     public Pokemon_ID[] playerPokemons;       //All the Pokemons player has in his "bag" and are available to switch
+    [Header("ENEMY'S TEAM")]
     public Pokemon_ID[] enemyPokemons;       //All the Pokemons enemy has in his "bag" and are available to switch
 
+    [Header("POKEMON SPRITES ARRAY")]
     //Holds the Pokemon's sprites (Front and Back)
     public Sprite[] pokemonPlayerSprites;
     public Sprite[] pokemonEnemySprites;
@@ -31,6 +28,7 @@ public class GameManager : MonoBehaviour
     
 
     //Texts
+    [Header("DIALOGUE TEXT")]
     public TextMeshProUGUI Dialogue;  //Main Dialogue Window, the one that says "What will CHARIZARD do?"
 
     //Player Pokemon Data
@@ -57,18 +55,7 @@ public class GameManager : MonoBehaviour
 
         pokemonProperties = GetComponent<PokemonProperties>();
     }
-
-
     
-
-    string pokemon;
-
-    private void Start() {
-        //Debug.Log(pokemonProperties.Pokedex[playerPokemons[2]].id);
-
-        
-    }
-
     
 
     private void Update() {

@@ -14,15 +14,25 @@ public class MoveButton : MonoBehaviour {
         
     }
 
+
+
     private void Start() {
-        text.text = CombatManager.Instance.currentPlayerPokemon.moveSet[buttonIndex].name;
+        
+
+        //Link the TriggerAttack method to the onClic event
         button.onClick.AddListener(TriggerAttack);
         
     }
 
+    private void OnEnable() {
+        //Gets the name of the Move based in the buttonIndex given
+        text.text = CombatManager.Instance.currentPlayerPokemon.moveSet[buttonIndex].name;
+    }
+
+    //Triggers the attack action using the PlayerAttack method in the CombatManager
     private void TriggerAttack() {
         if (CombatManager.Instance.canInteract) {
-            CombatManager.Instance.playerAttack(buttonIndex);
+            CombatManager.Instance.PlayerAttack(buttonIndex);
         }
 
         

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ActionButton : MonoBehaviour
 {
+    //This script manages the 4 main buttons "Fight", "Items", "Switch" and "Run"
+
     public GameObject self; //Reference to the Action Menu Buttons
 
     public enum Button_ID {
@@ -15,6 +17,7 @@ public class ActionButton : MonoBehaviour
 
     public Button_ID index;
 
+    //Activates the window menu of the selected button
     public void OnClic() {
         if (CombatManager.Instance.canInteract) {
             switch (index) {
@@ -37,7 +40,7 @@ public class ActionButton : MonoBehaviour
         
     }
 
-    
+    //Method that deactivates all menus but the selected one
     private void SwitchMenus(int menuIndex) {
 
         for (int i = 0; i < MenuManager.Instance.Menus.Length; i++) {

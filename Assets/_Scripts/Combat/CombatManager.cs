@@ -14,8 +14,8 @@ public class CombatManager : MonoBehaviour
 
     private List<Pokemon> internalPokemonList = new List<Pokemon>();
 
-    private Dictionary<Pokemon_ID,Pokemon> playerPokemonList = new Dictionary<Pokemon_ID, Pokemon>();
-    private Dictionary<Pokemon_ID,Pokemon> enemyPokemonList = new Dictionary<Pokemon_ID, Pokemon>();
+    public Dictionary<int,Pokemon> playerPokemonList = new Dictionary<int, Pokemon>();
+    public Dictionary<int,Pokemon> enemyPokemonList = new Dictionary<int, Pokemon>();
 
     public bool canInteract;
 
@@ -38,6 +38,7 @@ public class CombatManager : MonoBehaviour
         pokemonProperties = GetComponent<PokemonProperties>();
     }
     private void Start() {
+
         GetInternalPokemons();
         
         //Gives the first move to the pokemon with higher speed
@@ -46,27 +47,18 @@ public class CombatManager : MonoBehaviour
             canInteract = true;
         } 
         else {
-            enemieAttack();
+            EnemieAttack();
         }
 
     }
 
     private void Update() {
-        
-    }
-
-    public void pokemonAttack(Pokemon_ID attacker, Move_ID move, Pokemon_ID target) {
-
-        float damage;
-
-        Move playerMove = moveList.moves[move];
-
-
+        CheckPokemonDeath();
     }
 
     //This is the method that is called when the player selects a move for their pokemon to do.
     //It recieves data of player's, the move it used and data from the enemie's pokemon to calculate damage and apply it
-    public void playerAttack(int moveIndex) {
+    public void PlayerAttack(int moveIndex) {
 
         //Switch "canInteract" to false so player isn't able to attack or either do any other action while the enemy is attacking or text sequence is going on
         canInteract = false;
@@ -133,7 +125,7 @@ public class CombatManager : MonoBehaviour
 
     }
 
-    public void enemieAttack() {
+    public void EnemieAttack() {
 
 
         //Everything is pretty much the same as the "PlayerAttack" method
@@ -192,22 +184,26 @@ public class CombatManager : MonoBehaviour
         
     }
 
-    //Adds the pokemon from public list of GameManager to internal dictionary in CombatManager
+    //Adds the pokemon from public dictionary of GameManager to internal dictionary in CombatManager, to make it easier to use and be able to clone Pokemons
     private void GetInternalPokemons() {
+        //Loop to fill the internal Dictionary
         for (int i = 0; i < GameManager.Instance.playerPokemons.Length; i++) {
-            playerPokemonList.Add(pokemonProperties.Pokedex[GameManager.Instance.playerPokemons[i]].id, pokemonProperties.Pokedex[GameManager.Instance.playerPokemons[i]]);
+            playerPokemonList.Add(i, pokemonProperties.Pokedex[GameManager.Instance.playerPokemons[i]]);
         }
 
+        //Loop to fill the internal Dictionary
         for (int i = 0; i < GameManager.Instance.enemyPokemons.Length; i++) {
-            enemyPokemonList.Add(pokemonProperties.Pokedex[GameManager.Instance.enemyPokemons[i]].id, pokemonProperties.Pokedex[GameManager.Instance.enemyPokemons[i]]);
+            enemyPokemonList.Add(i, pokemonProperties.Pokedex[GameManager.Instance.enemyPokemons[i]]);
         }
 
-        currentPlayerPokemon = playerPokemonList[GameManager.Instance.playerPokemons[0]];
-        currentEnemyPokemon = enemyPokemonList[GameManager.Instance.enemyPokemons[0]];
+        //Picks the first Pokemon of each dictionary and use them as the initial Pokemons in combat
+        currentPlayerPokemon = playerPokemonList[0];
+        currentEnemyPokemon = enemyPokemonList[0];
         
 
 
     }
+
 
     public void ApplyAbility(Pokemon pokemon) {
         switch (pokemon.ability) {
@@ -307,10 +303,7 @@ public class CombatManager : MonoBehaviour
         
     }
 
-    IEnumerator waitSeconds(float seconds) {
-        yield return new WaitForSeconds(seconds);
-    }
-
+    //The text sequence that displays when you choose a move, it executes inside the "PlayerAttack" method, while it's executed, you can't do any toher action
     IEnumerator playerTextSequence(bool hit, Move move, int criticalHit) {
 
         dialogueText.text = currentPlayerPokemon.name + " used " + move.name;
@@ -355,11 +348,13 @@ public class CombatManager : MonoBehaviour
         }
 
 
-        enemieAttack();
+        EnemieAttack();
 
         yield break;
     }
 
+
+    //Same as playerTextSequence but for enemy
     IEnumerator enemyTextSequence(bool hit, Move move, int criticalHit) {
 
         dialogueText.text = currentEnemyPokemon.name + " used " + move.name;
@@ -409,6 +404,15 @@ public class CombatManager : MonoBehaviour
         canInteract = true;
 
         yield break;
+    }
+
+    private void CheckPokemonDeath() {
+        if (currentPlayerPokemon.actualHP <= 0) {
+            MenuManager.Instance.SwitchToMenu(MenuManager.Menus_ID.SWITCH);
+        }
+        if (currentEnemyPokemon.actualHP <= 0) {
+            currentEnemyPokemon = enemyPokemonList[Random.Range(0, enemyPokemonList.Count)];
+        }
     }
 
 }

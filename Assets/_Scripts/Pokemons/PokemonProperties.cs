@@ -10,7 +10,6 @@ public class PokemonProperties : MonoBehaviour {
     public Dictionary<Pokemon_ID, Pokemon> Pokedex = new Dictionary<Pokemon_ID, Pokemon>();
 
 
-    //Items, Moves, etc Dictionaries
 
     //References to other scripts
     MoveList Moves;
