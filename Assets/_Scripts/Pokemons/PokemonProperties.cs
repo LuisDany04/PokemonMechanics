@@ -56,6 +56,7 @@ public class PokemonProperties : MonoBehaviour {
         Pokedex.Add(Pokemon_ID.BLASTOISE, new Pokemon {
             id = Pokemon_ID.BLASTOISE,
             name ="BLASTOISE",
+            type = Type_ID.WATER,
             level =                         50, 
             maxHP=HP_Formula                (79, 50), 
             actualHP=HP_Formula             (79, 50), 
@@ -77,6 +78,7 @@ public class PokemonProperties : MonoBehaviour {
         Pokedex.Add(Pokemon_ID.VENUSAUR, new Pokemon {
             id = Pokemon_ID.VENUSAUR,
             name = "VENUSAUR",
+            type = Type_ID.GRASS,
             level =                         50,
             maxHP = HP_Formula              (80, 50),
             actualHP = HP_Formula           (80, 50),
@@ -97,6 +99,7 @@ public class PokemonProperties : MonoBehaviour {
 
         Pokedex.Add(Pokemon_ID.PIKACHU, new Pokemon {
             id = Pokemon_ID.PIKACHU,
+            type = Type_ID.ELECTRIC,
             name = "PIKACHU",
             level =                         50,
             maxHP = HP_Formula              (45, 50),
@@ -118,6 +121,7 @@ public class PokemonProperties : MonoBehaviour {
 
         Pokedex.Add(Pokemon_ID.GENGAR, new Pokemon {
             id = Pokemon_ID.GENGAR,
+            type = Type_ID.GHOST,
             name = "GENGAR",
             level =                         50,
             maxHP = HP_Formula              (60, 50),

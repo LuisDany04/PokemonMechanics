@@ -21,7 +21,11 @@ public class MoveButton : MonoBehaviour {
     }
 
     private void TriggerAttack() {
-        CombatManager.Instance.playerAttack(buttonIndex);
+        if (CombatManager.Instance.canInteract) {
+            CombatManager.Instance.playerAttack(buttonIndex);
+        }
+
+        
     }
 
 }

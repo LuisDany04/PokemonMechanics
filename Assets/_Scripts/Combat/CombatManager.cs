@@ -17,12 +17,14 @@ public class CombatManager : MonoBehaviour
     private Dictionary<Pokemon_ID,Pokemon> playerPokemonList = new Dictionary<Pokemon_ID, Pokemon>();
     private Dictionary<Pokemon_ID,Pokemon> enemyPokemonList = new Dictionary<Pokemon_ID, Pokemon>();
 
+    public bool canInteract;
 
     public Pokemon currentPlayerPokemon;
     public Pokemon currentEnemyPokemon;
 
 
     public TMP_Text dialogueText;
+    string nextDialogueText;
 
 
     private void Awake() {
@@ -37,7 +39,16 @@ public class CombatManager : MonoBehaviour
     }
     private void Start() {
         GetInternalPokemons();
-        dialogueText.text = "What will " + currentPlayerPokemon.name + " do?";
+        
+        //Gives the first move to the pokemon with higher speed
+        if (currentPlayerPokemon.speed > currentEnemyPokemon.speed) {
+            dialogueText.text = "What will " + currentPlayerPokemon.name + " do?";
+            canInteract = true;
+        } 
+        else {
+            enemieAttack();
+        }
+
     }
 
     private void Update() {
@@ -57,17 +68,29 @@ public class CombatManager : MonoBehaviour
     //It recieves data of player's, the move it used and data from the enemie's pokemon to calculate damage and apply it
     public void playerAttack(int moveIndex) {
 
+        //Switch "canInteract" to false so player isn't able to attack or either do any other action while the enemy is attacking or text sequence is going on
+        canInteract = false;
 
         //We save the move that player's pokemon used in a variable using the moveIndex to make the code easier to read
         Move playerMove = currentPlayerPokemon.moveSet[moveIndex];
 
-        //String where we deposit the dialogue we want to show depending on the phase we are in
-        string nextDialogueText = "";
+        //bool to check if the move hit or did not
+        bool hit = false;
+
+        //float that will hold the calculated damage
+        float damage = 0;
+
+        
+        int criticalHit = 0;
 
         //First of all, we check if attack did hit base on the Accuaracy stat of the move
         if (Random.Range(0, playerMove.ACC) < playerMove.ACC) {
-            //float that will hold the calculated damage
-            float damage = 0;
+
+            hit = true;
+
+            
+
+            
 
             //We check if the used move is special or not, so we can use the "Attack" and "Defense" stats for the damage formula or "Special Attack" and "Sepcial Defense" stats
             switch (playerMove.category) {
@@ -87,7 +110,7 @@ public class CombatManager : MonoBehaviour
             }
 
             //Creates a random number to simulate a 1 in 12 probabilty to check if the hit was a critical hit
-            int criticalHit = Random.Range(0, 12);
+            criticalHit = Random.Range(0, 12);
             if (criticalHit == 1) {
                 damage = damage * 1.5f;
             }
@@ -102,44 +125,72 @@ public class CombatManager : MonoBehaviour
             currentEnemyPokemon.actualHP = currentEnemyPokemon.actualHP - damage;
 
 
-            if (criticalHit == 1) {
-                nextDialogueText = "Critical hit!";
-            }
-
-            waitSeconds(1.5f);
-
-            switch (ElementalWeaknessOrResistanceMultiplier(playerMove, currentEnemyPokemon)) {
-                case 0.5f:
-                    nextDialogueText = "It wasn't very effective";
-                    break;
-                case 1:
-                    nextDialogueText = "It hit!";
-                    break;
-                case 2:
-                    nextDialogueText = "It was super effective!!";
-                    break;
-                default:
-
-                    break;
-            }
-
-            dialogueText.text = nextDialogueText;
-        } 
-        
-        else {
-            dialogueText.text = "It missed";
         }
 
+        StartCoroutine(playerTextSequence(hit, playerMove, criticalHit));
 
 
-        
 
     }
 
     public void enemieAttack() {
 
-    }
 
+        //Everything is pretty much the same as the "PlayerAttack" method
+
+        
+
+        float damage = 0;
+
+        int criticalHit = 0;
+
+        bool hit = false;
+
+        Move enemyMove = currentEnemyPokemon.moveSet[Random.Range(0, 4)];
+
+        if (Random.Range(0, enemyMove.ACC) < enemyMove.ACC) {
+
+            hit = true;
+            
+            switch (enemyMove.category) {
+                case MoveCategory_ID.PHYSICAL:
+                    damage = ((2f * currentEnemyPokemon.level / 5) + 2) * (enemyMove.PWR) * (currentEnemyPokemon.sp_Atkk / currentPlayerPokemon.sp_Deff) / 50 / 2;
+                    break;
+
+                case MoveCategory_ID.SPECIAL:
+                    damage = ((2f * currentEnemyPokemon.level / 5) + 2) * (enemyMove.PWR) * (currentEnemyPokemon.attack / currentPlayerPokemon.defense) / 50 / 2;
+                    break;
+
+            }
+
+            if (enemyMove.type == currentEnemyPokemon.type) {
+                damage = damage + damage * 0.5f;
+            }
+
+            criticalHit = Random.Range(0, 12);
+
+            if (criticalHit == 1) {
+                damage = damage * 1.5f;
+            }
+
+            //Checks elemental weakness or resistance
+            damage = damage * ElementalWeaknessOrResistanceMultiplier(enemyMove, currentPlayerPokemon);
+
+
+
+
+            //Applies damage to enemy pokemon
+            currentPlayerPokemon.actualHP = currentPlayerPokemon.actualHP - damage;
+
+
+           
+
+        }
+
+        StartCoroutine(enemyTextSequence(hit, enemyMove, criticalHit));
+
+        
+    }
 
     //Adds the pokemon from public list of GameManager to internal dictionary in CombatManager
     private void GetInternalPokemons() {
@@ -260,4 +311,106 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
     }
 
+    IEnumerator playerTextSequence(bool hit, Move move, int criticalHit) {
+
+        dialogueText.text = currentPlayerPokemon.name + " used " + move.name;
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (hit) {
+
+            dialogueText.text = "It hit!";
+
+            yield return new WaitForSeconds(1.5f);
+
+            if (criticalHit == 1) {
+                dialogueText.text = "Critical hit!";
+                yield return new WaitForSeconds(1.5f);
+            }
+
+            
+            switch (ElementalWeaknessOrResistanceMultiplier(move, currentEnemyPokemon)) {
+                case 0.5f:
+                    dialogueText.text = "It wasn't very effective";
+                    yield return new WaitForSeconds(1.5f);
+                    break;
+                case 2:
+                    dialogueText.text = "It was super effective!!";
+                    yield return new WaitForSeconds(1.5f);
+                    break;
+                default:
+
+                    break;
+            }
+
+
+
+
+        } 
+        else {
+
+            dialogueText.text = "It missed";
+            yield return new WaitForSeconds(1.5f);
+
+        }
+
+
+        enemieAttack();
+
+        yield break;
+    }
+
+    IEnumerator enemyTextSequence(bool hit, Move move, int criticalHit) {
+
+        dialogueText.text = currentEnemyPokemon.name + " used " + move.name;
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (hit) {
+
+            dialogueText.text = "It hit!";
+
+            yield return new WaitForSeconds(1.5f);
+
+            if (criticalHit == 1) {
+                dialogueText.text = "Critical hit!";
+                yield return new WaitForSeconds(1.5f);
+            }
+
+
+            switch (ElementalWeaknessOrResistanceMultiplier(move, currentPlayerPokemon)) {
+                case 0.5f:
+                    dialogueText.text = "It wasn't very effective";
+                    yield return new WaitForSeconds(1.5f);
+                    break;
+                case 2:
+                    dialogueText.text = "It was super effective!!";
+                    yield return new WaitForSeconds(1.5f);
+                    break;
+                default:
+
+                    break;
+            }
+
+
+
+
+        } else {
+
+            dialogueText.text = "It missed";
+            yield return new WaitForSeconds(1.5f);
+
+        }
+
+
+
+        dialogueText.text = "What will " + currentPlayerPokemon.name + " do?";
+
+        canInteract = true;
+
+        yield break;
+    }
+
 }
+
+

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActionButton : MonoBehaviour
 {
-    public GameObject self; //Reference to the Action Menu Buttons q
+    public GameObject self; //Reference to the Action Menu Buttons
 
     public enum Button_ID {
         _1,
@@ -16,22 +16,25 @@ public class ActionButton : MonoBehaviour
     public Button_ID index;
 
     public void OnClic() {
-        switch (index) {
-            case Button_ID._1:
-                SwitchMenus((int)Button_ID._1);
-                break;
-            case Button_ID._2:
-                SwitchMenus((int)Button_ID._2);
-                break;
-            case Button_ID._3:
-                SwitchMenus((int)Button_ID._3);
-                break;
-            case Button_ID._4:
-                SwitchMenus((int)Button_ID._4);
-                break;
-            default:
-                break;
+        if (CombatManager.Instance.canInteract) {
+            switch (index) {
+                case Button_ID._1:
+                    SwitchMenus((int)Button_ID._1);
+                    break;
+                case Button_ID._2:
+                    SwitchMenus((int)Button_ID._2);
+                    break;
+                case Button_ID._3:
+                    SwitchMenus((int)Button_ID._3);
+                    break;
+                case Button_ID._4:
+                    CombatManager.Instance.dialogueText.text = "You can't escape";
+                    break;
+                default:
+                    break;
+            }
         }
+        
     }
 
     

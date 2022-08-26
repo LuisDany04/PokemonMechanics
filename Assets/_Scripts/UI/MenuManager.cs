@@ -28,9 +28,11 @@ public class MenuManager : MonoBehaviour
 
     private void Update() {
 
-        if (inputSystem.Instance.Back == 1) {
+        if (inputSystem.Instance.Back == 1 || CombatManager.Instance.canInteract == false) {
             SwtichToActionButtons();
         }
+
+
 
     }
 

@@ -23,37 +23,7 @@ public class ActionMenu : MonoBehaviour {
 
     private void Update() {
 
-        //Checks
-        for (int i = 0; i < 2; i++) {
-            for (int n = 0; n < 2; n++) {
-                if (buttonValue[i,n] == 1) {
-                    DisplaySelectedButton(buttons[i], true);
-                    Debug.Log("Selected button detected");
-                } else {
-                    DisplaySelectedButton(buttons[i], false);
-                }
-            }
-            
-        }
-    }
-
-    private void menuMovement() {
-
-    }
-
-
-
-    private void DisplaySelectedButton(GameObject button, bool selected) {
-        switch (selected) {
-            case true:
-                button.GetComponent<TextMeshProUGUI>().color = new Color(140, 20, 252, 1);
-
-                break;
-            case false:
-                //button.GetComponent<TextMeshProUGUI>().color = Color.black;
-                break;
-        }
-
         
     }
+
 }
