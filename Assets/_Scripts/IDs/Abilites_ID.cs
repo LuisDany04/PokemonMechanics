@@ -1,6 +1,5 @@
 public enum Ability_ID {
     ADAPTABILITY,
-    AERILATE,
-    BATTERY,
-    CLEAR_BODY
+    COMPUND_EYES,
+    HUSTLE
 }

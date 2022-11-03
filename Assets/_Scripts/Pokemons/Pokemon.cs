@@ -18,6 +18,7 @@ public class Pokemon {
     public Type_ID type;
     public Ability_ID ability;
     public Move[] moveSet;
-
+    public Effect_ID effect = Effect_ID.NO_EFFECT;
+    public int effectTimer = 0;
 }
 

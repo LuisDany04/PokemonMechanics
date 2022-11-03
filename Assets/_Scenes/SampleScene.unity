@@ -980,8 +980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c2d1f384100344bb04f19c33604e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPokemons: 000000000100000002000000
-  enemyPokemons: 0200000004000000
+  playerPokemons: 000000000300000002000000
+  enemyPokemons: 0300000000000000
   pokemonPlayerSprites:
   - {fileID: 21300000, guid: 4e7023cd378451d4d80b1c653bb62ff7, type: 3}
   - {fileID: 21300000, guid: 612b6aa88e95291469e1d96088ebc649, type: 3}
@@ -1015,6 +1015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canInteract: 0
   dialogueText: {fileID: 766037698}
+  playersPokemonHealth: 0
+  enemyPokemonHealth: 0
 --- !u!114 &230743547
 MonoBehaviour:
   m_ObjectHideFlags: 0

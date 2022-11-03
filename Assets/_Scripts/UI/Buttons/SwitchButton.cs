@@ -31,5 +31,8 @@ public class SwitchButton : MonoBehaviour
 
         //Switches back to Action Menu after switching Pokemon
         MenuManager.Instance.SwtichToActionButtons();
+
+        //Ends turn and lets enemy pokemon attack
+        CombatManager.Instance.EnemieAttack();
     }
 }

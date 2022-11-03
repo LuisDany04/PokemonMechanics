@@ -45,7 +45,8 @@ public class MoveList: MonoBehaviour
             PWR = 100,
             ACC = 100,
             PP = 100,
-            EFC = false
+            EFC = true,
+            EFC_ID = Effect_ID.GROWL
         });
 
         moves.Add(Move_ID.QUICK_ATTACK, new Move {
@@ -65,7 +66,9 @@ public class MoveList: MonoBehaviour
             PWR = 90,
             ACC = 100,
             PP = 15,
-            EFC = false
+            EFC = true,
+            EFC_ID = Effect_ID.BURN,
+            EFC_TIME = 3
         });
 
         moves.Add(Move_ID.HYDRO_CANNON, new Move {
@@ -95,8 +98,10 @@ public class MoveList: MonoBehaviour
             PWR = 90,
             ACC = 100,
             PP = 15,
-            EFC = false
-        });
+            EFC = true,
+            EFC_ID = Effect_ID.PARALYSIS,
+            EFC_StealTurn = true
+        }); ;
 
         moves.Add(Move_ID.SHADOWBALL, new Move {
             name = "SHADOWBALL",
